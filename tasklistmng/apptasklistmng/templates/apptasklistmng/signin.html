@@ -1,0 +1,44 @@
+<html>
+{% load static %}
+<!-- <link rel="stylesheet" type="text/css" href="{% static 'apptasklistmng/css/style.css' %}"> -->
+<script src="{% static 'apptasklistmng/scripts/signin.js' %}" type="module"></script>
+
+    <head>
+        <title>Sign in</title>
+        <!-- <link rel="stylesheet" href=".css"> -->
+    </head>
+    <body>
+        <header style="text-align: center;">
+            <h1>Sign in </h1>
+        </header>
+           
+    </body>
+    <div class="out_form">
+        <table>
+            <form class="contactme_form" id="signinform">  
+                <tr>
+                    <td>
+                        Username:
+                    </td>
+                    <td><input type="text" id="username"  size="30" required></input>
+                    </td>
+                </tr>
+                <br>
+                <tr>
+                    <td>
+                        Password:
+                    </td>
+                    <td><input type="password" id="password" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d).*"  size="30" required></input>
+                    </td>
+                </tr>
+                <tr>
+                    <td><button type="submit">Sign in</button></td>
+                </tr>
+            </form>
+            <tr>
+                <td colspan="2"><p id="log"></p></td>
+            </tr>
+        </table>
+        <br><br>
+
+</html>

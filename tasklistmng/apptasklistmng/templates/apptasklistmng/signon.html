@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<script src="{% static 'apptasklistmng/scripts/signon.js' %}" type="module"></script>
+<head>
+    <title>Sign on</title>
+    <!-- <link rel="stylesheet" href=".css"> -->
+</head>
+<body>
+    <header style="text-align: center;">
+        <h1>Sign on</h1>
+    </header>
+           
+    <div class="out_form">
+    <table id="signontable">
+        <form class="contactme_form" id="signonform">
+            
+                <tr>
+                    <td style="width: 10%;">
+                        <label for="firstname">
+                            First Name:
+                        </label>
+                    </td>
+                    <td><input type="text" id="firstname" name="firstname" required/></input>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 10%;">
+                        <label for="middlename">
+                            Middle Name:
+                        </label>
+                    </td>
+                    <td><input type="text" id="middlename" /></input>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 10%;">
+                        <label for="lastname">
+                            Last Name:
+                        </label>
+                    </td>
+                    <td><input type="text" id="lastname" required/></input>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 10%;">
+                        <label for="username">
+                            Username:
+                        </label>
+                    </td>
+                    <td><input type="text" id="username" required/></input>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 10%;">
+                    <label for="password">
+                        Password (8 characters minimum):
+                    </label>
+                    </td>
+                    <td><input type="password" id="password" name="password" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d).*" 
+                            minlength="8"  maxlength="32" required></input> 
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Email:
+                    </td>
+                    <td><input type="email" id="email" pattern=".+@.+\..+" size="30" required></input>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 10%;">
+                        <label for="gender">
+                            Gender:
+                        </label>
+                    </td>
+                    <td>
+                        <label for="gender"> Select your gender </label>
+                        <select name="gender" id="gender">
+                            <option value="none" selected>Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">other</option>        
+                        </select>
+                        
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td><label for = "dob">
+                        DoB:
+                        </label>
+                    </td>
+                    <td><input type="date" id="dob"></input>
+                    </td>
+                </tr>
+                
+            
+                <tr>
+                    <td><button type="submit">Creat account</button></td>
+                </tr>
+        </form>
+    </table>
+    </div>
+        
+    <br><br>
+        
+</body>
+
+</html>
