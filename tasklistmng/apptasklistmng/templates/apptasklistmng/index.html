@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'apptasklistmng/style.css' %}">
+<script src="{% static 'apptasklistmng/tasksListScript.js' %}" type="module"></script>
 
 <head>
   <meta charset="UTF-8">
@@ -8,9 +12,6 @@
   
   <title>Task List Management</title>
 
-  <!-- tasks list css -->
-  <link rel="stylesheet" href="./css/tasksListStyle.css">
-    
 
 </head>
 
@@ -48,10 +49,6 @@
   </svg>  
 
 
-  <!-- tasks list Script -->
-  <script src="./scripts/tasksListScript.js" type="module"></script>
-  <script src="./useful_node_modules/sortablejs/modular/sortable.core.esm.js" type="module"></script>
-  
 
 
   <footer style="text-align: center;color: #494040; clear:both">

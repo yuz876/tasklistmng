@@ -146,4 +146,27 @@ at this momement, we can see taskslist in http://127.0.0.1:8000/tasklistmng/
 
 
 - Add css file
+   - add static in tasklisting_django/tasklistmng/apptasklistmng/static
+   - then add apptasklistmng in tasklisting_django/tasklistmng/apptasklistmng/static, then add style.css in tasklisting_django/tasklistmng/apptasklistmng/static/apptasklistmng.
+  - then add 
+```
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'apptasklistmng/style.css' %}">
+
+``` 
+in template/apptasklistmng/index.html
+
+- Add js file
+  - create taskListScript.js under templates/apptasklistmng
+  - add Task.js under templates/apptasklistmng
+  - add 
+
+```
+<script src="{% static 'apptasklistmng/tasksListScript.js' %}"></script>
+```
+ in template/apptasklistmng/index.html
+
+
+
 
