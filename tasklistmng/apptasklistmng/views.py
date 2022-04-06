@@ -1,10 +1,12 @@
-from django.shortcuts import render, redirect
+import imp
+from django.shortcuts import render, redirect, get_object_or_404
 
 # Create your views here.
 from django.http import HttpResponse
 
 from .forms import SignInForm
 from .forms import SignOnForm
+from .models import Users, Tasks, Userchangerecords, Userloginactivityrecords
 
 
 def index(request):
@@ -41,15 +43,21 @@ def signinprocess(request):
             userpwd = form["userpwd"].value()
             print("usernickname: ", usernickname)
             print("userpwd: ", userpwd)
+            userpwd = str(hash(userpwd))
+            print("userpwd hash: ", userpwd)
 
-
-            # redirect to a new URL:
+            # connect DB
+            try:
+                user = Users.objects.get(usernickname=usernickname, userpwd=userpwd)
+            except Users.DoesNotExist:
+                return render(request, "apptasklistmng/signin.html", {"errormsg": "Username or Password Incorrect."})
             return render(request, "apptasklistmng/userprofile.html", {"usernickname": usernickname, "userpwd": userpwd})
-        return HttpResponse("hello signin process invalid")
+           
+        return render(request, "apptasklistmng/wrong.html", {"errormsg": "hello signin process invalid."})
 
     # if a GET (or any other method) we'll create a blank form
     else:
-        return HttpResponse("hello signin process don't use get")
+        return render(request, "apptasklistmng/wrong.html", {"errormsg": "hello signin process don't use get."})
 
     
 
@@ -74,10 +82,21 @@ def signonprocess(request):
             print("usedob: ", userdob)
             print("usergender: ", usergender)
             print("userpwd: ", userpwd)
+            userpwd = str(hash(userpwd))
+            print("userpwd hash: ", userpwd)
+
+            # connect Db
+            #  Users.objects.create(userfirname="testfirname2", userlasname="testlasname2", 
+            #  usernickname="testnickname2", useremail="test@test.test", 
+            #  usergender="female", userpwd="testpwdA1", userdob="2022-04-06")
+            try:
+                Users.objects.create(userfirname=userfirstname, usermidname=usermiddlename, userlasname=userlastname, 
+                usernickname=usernickname, useremail=useremail, 
+                usergender=usergender, userpwd=userpwd, userdob=userdob)
+            except:
+                return render(request, "apptasklistmng/signon.html", {"errormsg": "Username or Password Incorrect."})
             return render(request, "apptasklistmng/userprofile.html", {"usernickname": usernickname, "userpwd": userpwd, "userlastname: ": userlastname, "userfirstname: ": userfirstname,"usermiddlename: ": usermiddlename, "useremail: ": useremail,"usedob: ": userdob, "usergender: ":usergender })
-        return HttpResponse("hello signon process invalid")
+        return render(request, "apptasklistmng/wrong.html", {"errormsg": "hello signon process invalid."})        
     else:
-        return HttpResponse("hello signon process don't use get")
-
-
-    
+        return render(request, "apptasklistmng/wrong.html", {"errormsg": "hello signon process don't use get."})  
+      

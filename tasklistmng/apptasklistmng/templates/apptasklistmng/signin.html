@@ -46,6 +46,12 @@
         <br><br>
     </div>
     
+
+
+
+    {% if errormsg %}
+         <script>alert("{{ errormsg }}")</script> 
+    {% endif %}
     </main>
     <footer-component></footer-component>
 </body>
