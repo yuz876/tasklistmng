@@ -187,6 +187,7 @@ in template/apptasklistmng/index.html
 - signin.js and signon.js in tasklisting_django/tasklistmng/apptasklistmng/static/apptasklistmng/scripts
 - change related file path. 
 
+
 # Our Database
 
 - Create database by hand:
@@ -257,7 +258,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 # Djaango form
 
 - signin.html <form> set action  to destination page. Don't forget {% csrf_token %}  it used for any cross page/view data tranmission in django. 
-```
+```html
 <form  action="{% url 'signinprocess'  %}" method="POST"> 
 {% csrf_token %}  
 </form>
@@ -268,6 +269,11 @@ Type "help", "copyright", "credits" or "license" for more information.
 - add 'signinprocess/' path in usrls.py
 - add 'signinprocess' view in views.py
 ```py
+
+# urls.py
+path('signinprocess/', views.signinprocess, name="signinprocess"),
+
+# views.py
 def signinprocess(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
@@ -294,4 +300,19 @@ def signinprocess(request):
 ```
 
 
-- Attention: The "name" in html input tag/element must  be same as the modle file "forms.py" vairbale name.
+- Attention: 
+  - The "name" in html input tag/element must  be same as the modle file "forms.py" vairbale name.
+  - The model fields and form fields are two things.
+
+# Signin /Signon work with Database
+
+Change views.  Use django model provided methods to connect and handle databases. Like:
+```py
+# connect DB
+try:
+    user = Users.objects.get(usernickname=usernickname, userpwd=userpwd)
+except Users.DoesNotExist:
+    return render(request, "apptasklistmng/signin.html", {"errormsg": "Username or Password Incorrect."})
+return render(request, "apptasklistmng/userprofile.html", {"usernickname": usernickname, "userpwd": userpwd})
+```
+
