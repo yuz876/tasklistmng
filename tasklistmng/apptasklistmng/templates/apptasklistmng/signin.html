@@ -1,26 +1,30 @@
 <html>
-{% load static %}
-<!-- <link rel="stylesheet" type="text/css" href="{% static 'apptasklistmng/css/style.css' %}"> -->
-<script src="{% static 'apptasklistmng/scripts/signin.js' %}" type="module"></script>
+<head>
+    <title>Sign In</title>
+            
+            
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'apptasklistmng/css/style.css' %}">
+    <script src="{% static 'apptasklistmng/scripts/components/footer.js'%}" type="text/javascript" defer></script>
+    <!-- <script src="{% static 'apptasklistmng/scripts/signin.js' %}" type="module"></script> -->
+    <script src="{% static 'apptasklistmng/scripts/components/header.js' %}" type="text/javascript" defer></script>
 
-    <head>
-        <title>Sign in</title>
-        <!-- <link rel="stylesheet" href=".css"> -->
-    </head>
-    <body>
-        <header style="text-align: center;">
-            <h1>Sign in </h1>
-        </header>
-           
-    </body>
-    <div class="out_form">
+</head>
+<body>
+    <header-component></header-component>
+
+    <div class="tasks_list_title">Sign In</div>
+         
+    <main>
+    <div class="signin">
         <table>
-            <form class="contactme_form" id="signinform">  
+            <form class="signinform" id="signinform" action="{% url 'apptasklistmng:signinprocess'  %}" method="POST"> 
+                {% csrf_token %}  
                 <tr>
                     <td>
                         Username:
                     </td>
-                    <td><input type="text" id="username"  size="30" required></input>
+                    <td><input type="text" id="username" name="usernickname"  size="30" required></input>
                     </td>
                 </tr>
                 <br>
@@ -28,7 +32,7 @@
                     <td>
                         Password:
                     </td>
-                    <td><input type="password" id="password" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d).*"  size="30" required></input>
+                    <td><input type="password" id="password" name="userpwd" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d).*"  size="30" required></input>
                     </td>
                 </tr>
                 <tr>
@@ -40,5 +44,9 @@
             </tr>
         </table>
         <br><br>
-
+    </div>
+    
+    </main>
+    <footer-component></footer-component>
+</body>
 </html>

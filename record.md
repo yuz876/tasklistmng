@@ -252,3 +252,46 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> Users.objects.filter(pk=1)
 <QuerySet [<Users: Users object (1)>]>
 ```
+
+
+# Djaango form
+
+- signin.html <form> set action  to destination page. Don't forget {% csrf_token %}  it used for any cross page/view data tranmission in django. 
+```
+<form  action="{% url 'signinprocess'  %}" method="POST"> 
+{% csrf_token %}  
+</form>
+```
+
+- create forms.py and its class SignInForm 
+
+- add 'signinprocess/' path in usrls.py
+- add 'signinprocess' view in views.py
+```py
+def signinprocess(request):
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = SignInForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            # process the data in form.cleaned_data as required
+            # ...
+            form.cleaned_data # convert it to dict
+            usernickname = form["usernickname"].value()
+            userpwd = form["userpwd"].value()
+            print("usernickname: ", usernickname)
+            print("userpwd: ", userpwd)
+
+
+            # redirect to a new URL:
+            return render(request, "apptasklistmng/userprofile.html", {"usernickname": usernickname, "userpwd": userpwd})
+        return HttpResponse("hello signin process invalid")
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        return HttpResponse("hello signin process don't use get")
+```
+
+
+- Attention: The "name" in html input tag/element must  be same as the modle file "forms.py" vairbale name.

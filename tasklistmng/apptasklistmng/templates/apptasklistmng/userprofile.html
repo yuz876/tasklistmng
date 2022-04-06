@@ -1,0 +1,17 @@
+<html>
+<head>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'apptasklistmng/css/style.css' %}">
+<script src="{% static 'apptasklistmng/scripts/components/header.js' %}" type="text/javascript" defer></script>
+<script src="{% static 'apptasklistmng/scripts/components/footer.js' %}" type="text/javascript" defer></script>
+</head>
+
+<body>
+<header-component></header-component>
+{{usernickname}}
+{{userpwd}}
+
+
+<footer-component></footer-component> 
+</body>
+</html>

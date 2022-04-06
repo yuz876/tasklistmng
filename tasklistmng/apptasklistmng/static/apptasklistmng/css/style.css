@@ -4,6 +4,7 @@
 }
 
 .tasks_list_title {
+    font-family: sans-serif;
     text-align: center;
     margin-bottom: 20px;
     font-size: 80px;
@@ -121,4 +122,53 @@
     display: block;
     margin:auto;
     margin-bottom: 20px;
+}
+
+
+header{
+    background-color: rgb(255, 253, 253);
+    overflow: hidden;
+    margin-left: auto; 
+    margin-right: 0;
+    width: 60%;
+    text-align: right;
+    position:sticky;
+    top: 0px;
+}
+header a {
+    float: left;
+    opacity: 0.5;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    /* width: 100%; */
+}
+header a:hover {
+    background-color: rgb(201, 197, 197);
+    color: hsl(0,0,0);
+}
+header a.active {
+    background-color: #e46f6f;
+    color: white;
+}
+
+
+.signinonh1 {
+    text-align: center;
+}
+
+
+
+
+.signin table {
+    /* text-align: center; */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.signon table {
+    /* text-align: center; */
+    margin-left: auto;
+    margin-right: auto;
 }
