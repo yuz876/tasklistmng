@@ -54,7 +54,9 @@ function listenOnAndupdateTaskItemDate(){
 * @param {json} oneTask is a json for one task item.
 */
 export function renderOneTaskItem(oneTask){
+  // step 1 find destination
   const tasksListModuleForm =  document.getElementById("tasks_list_items_display");//locate where to add
+  // step 2 prepare variables
   const tasktext = oneTask.taskText;
   const isChecked = Number(oneTask.checked) === 1 ? "checked" : "unchecked";
   let spanCheckedOrCheckedStyle;
@@ -77,6 +79,7 @@ export function renderOneTaskItem(oneTask){
   const tasks_list_date_in_item_form = "tasks_list_date_in_item_form"+taskID;
   const tasks_list_date_in_item = "tasks_list_date_in_item"+taskID;
 
+  // step 3  concatenate html elements
   const oneTaskItem = document.createElement("li");// create new element
   oneTaskItem.setAttribute('class', `tasks_list_item`);
   oneTaskItem.innerHTML = `
@@ -92,7 +95,8 @@ export function renderOneTaskItem(oneTask){
         <svg><use href="#delete-icon"></use></svg>
       </button>
   `;
-  tasksListModuleForm.appendChild(oneTaskItem);//inject
+  // step 4 inject
+  tasksListModuleForm.appendChild(oneTaskItem);
 }
 
 
@@ -247,12 +251,13 @@ function getDefaultDate(){
 */
 function  renderTasksListAndUpdateTasksListDefaultDate(){
   renderTasksList();
-  //update tasks list defulat date
+  //update task-list-date-input defulat date
   document.getElementById("tasks_list_date_input").setAttribute("value",getDefaultDate());
 }
 
 // starts here
 document.addEventListener('DOMContentLoaded', renderTasksListAndUpdateTasksListDefaultDate);
+
 
 
 
@@ -303,7 +308,8 @@ document.getElementById("tasks_list_form").addEventListener("submit", event => {
 * @param {String} usrNewDate. It is the new date user select if user change  the date of one task item. It is empty if user do other oprations.
 */
 function clickOneTaskUpdateTasksList(features, taskIdClickedOn, usrNewDate){
-  //read from LS - delete or check/uncheck - write back into LS - render again
+  //1. read from LS - 2. delete or check/uncheck or changedate or important 
+  // - 3. write back into LS - 4. render again
   let myStorage = window.localStorage;
 
   let allTasksList = getExistedTasksFromLS();

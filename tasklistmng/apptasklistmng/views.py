@@ -1,4 +1,4 @@
-import imp
+import hashlib
 from django.shortcuts import render, redirect, get_object_or_404
 
 # Create your views here.
@@ -43,7 +43,7 @@ def signinprocess(request):
             userpwd = form["userpwd"].value()
             print("usernickname: ", usernickname)
             print("userpwd: ", userpwd)
-            userpwd = str(hash(userpwd))
+            userpwd = str(hashlib.md5( userpwd.encode() ).hexdigest() )
             print("userpwd hash: ", userpwd)
 
             # connect DB
@@ -82,7 +82,7 @@ def signonprocess(request):
             print("usedob: ", userdob)
             print("usergender: ", usergender)
             print("userpwd: ", userpwd)
-            userpwd = str(hash(userpwd))
+            userpwd = str(hashlib.md5( userpwd.encode() ).hexdigest())
             print("userpwd hash: ", userpwd)
 
             # connect Db

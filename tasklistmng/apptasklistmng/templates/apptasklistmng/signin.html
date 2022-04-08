@@ -8,6 +8,7 @@
     <script src="{% static 'apptasklistmng/scripts/components/footer.js'%}" type="text/javascript" defer></script>
     <!-- <script src="{% static 'apptasklistmng/scripts/signin.js' %}" type="module"></script> -->
     <script src="{% static 'apptasklistmng/scripts/components/header.js' %}" type="text/javascript" defer></script>
+    <script src="{% static 'apptasklistmng/scripts/weather.js' %}" type="text/javascript" defer></script>
 
 </head>
 <body>
@@ -47,7 +48,9 @@
     </div>
     
 
-
+    <button type="button" id='weatherButton'>Get weather</button>
+    <p id="weatherDescript"></p>
+    <img id="weathericon" src=""/>
 
     {% if errormsg %}
          <script>alert("{{ errormsg }}")</script> 
