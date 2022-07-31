@@ -168,6 +168,29 @@ function updateTasksListOrder(oldIndex, newIndex){
   renderTasksList();
 }
 
+
+
+
+// react example
+const e = React.createElement;
+class LikeButton extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { liked: false };
+  }
+
+  render() {
+    if (this.state.liked) {
+      return 'You liked this.';
+    }
+
+    return e(
+      'button',
+      { onClick: () => this.setState({ liked: true }) },
+      'Like'
+    );
+  }
+}
 /**
 * This function render the html content of the whole tasks list.
 */
@@ -193,6 +216,11 @@ function renderTasksList(){
       }
     )
     listenOnAndupdateTaskItemDate();
+
+    // react example: add a like button
+    const domContainer = document.querySelector('#reactexample');
+    const root = ReactDOM.createRoot(domContainer);
+    root.render(e(LikeButton));
   }
   
   

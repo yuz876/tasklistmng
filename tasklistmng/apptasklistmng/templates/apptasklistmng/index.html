@@ -17,6 +17,11 @@
   <script src="{% static 'apptasklistmng/scripts/components/footer.js' %}" type="text/javascript" defer></script>
   <script src="{% static 'apptasklistmng/scripts/components/header.js' %}" type="text/javascript" defer></script>
 
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
 </head>
 
 <body>
@@ -39,6 +44,7 @@
     </form> 
     <ul id="tasks_list_items_display"  class="tasks_list_items_display">
     </ul>  
+    <div id="reactexample"></div>
 </div>
 <!-- tasks list part end-->
   
