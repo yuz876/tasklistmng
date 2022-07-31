@@ -1,3 +1,11 @@
+# If just run the project
+
+tasklistmng_django$ source venv/bin/activate
+
+tasklistmng_django$ cd tasklistmng
+
+tasklistmng_django/tasklistmng$ python manage.py runserver 8001
+
 # Init django
 
 
